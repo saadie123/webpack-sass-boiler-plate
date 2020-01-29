@@ -1,18 +1,14 @@
-import 'popper.js';
 import 'bootstrap';
-import './index';
+import 'popper.js';
+import 'slick-carousel';
+import $ from 'jquery';
 
-const promise = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('promise resolved');
-    }, 5000);
+$(document).ready(() => {
+  const message = 'Document is ready';
+  console.log(`${message} with ES6, ES7 setup`);
+
+  $('#datepicker').tooltip({
+    title: 'hello'
   });
-};
-
-const callApi = async () => {
-  const response = await promise();
-  console.log(response);
-};
-
-callApi();
+  $('.your-class').slick();
+});
