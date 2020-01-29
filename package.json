@@ -1,0 +1,42 @@
+{
+  "name": "webpack-sass-boiler-plate",
+  "version": "1.0.0",
+  "description": "This is a boiler plate for webpack and sass setup",
+  "main": "index.html",
+  "scripts": {
+    "watch:sass": "node-sass sass/main.scss assets/css/style.css  --source-map true --source-map-embed true -w",
+    "watch:js": "webpack --config webpack.development.config.js --watch",
+    "devserver": "live-server",
+    "start": "npm-run-all --parallel devserver watch:sass watch:js",
+    "compile:js": "webpack --config webpack.production.config.js",
+    "compile:sass": "node-sass sass/main.scss assets/css/style.css",
+    "concat:css": "concat -o assets/css/style.css assets/css/style.css",
+    "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" assets/css/style.css -o assets/css/style.css",
+    "compress:css": "node-sass assets/css/style.css assets/css/style.min.css --output-style compressed",
+    "build": "npm-run-all compile:sass concat:css prefix:css compress:css compile:js"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-stage-2": "^7.8.3",
+    "autoprefixer": "^8.2.0",
+    "babel-loader": "^8.0.6",
+    "concat": "^1.0.3",
+    "live-server": "^1.2.1",
+    "node-sass": "^4.13.1",
+    "npm-run-all": "^4.1.2",
+    "postcss-cli": "^5.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.3",
+    "bootstrap": "^4.4.1",
+    "core-js": "^3.6.4",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0"
+  }
+}
